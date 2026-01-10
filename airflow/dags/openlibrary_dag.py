@@ -23,7 +23,7 @@ default_args = {
 }
 
 dag = DAG(
-    'openlibrary_crawler_v6',
+    'openlibrary_crawler_v8',
     default_args=default_args,
     description='Crawl Open Library API and store in MySQL',
     schedule_interval='@daily',  # Run daily
@@ -48,18 +48,17 @@ def check_results():
     
     return count
 
-crawl_task = PythonOperator(
+
+task_1 = PythonOperator(
     task_id='crawl_openlibrary',
     python_callable=run_crawler,
     dag=dag,
-    execution_timeout=timedelta(hours=6),  # Max 6 hours for crawling
 )
 
-verify_task = PythonOperator(
+task_2 = PythonOperator(
     task_id='verify_results',
     python_callable=check_results,
     dag=dag,
 )
 
-# Set task dependencies
-crawl_task >> verify_task
+task_1 >> task_2

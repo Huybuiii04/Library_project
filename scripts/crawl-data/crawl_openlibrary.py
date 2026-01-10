@@ -24,7 +24,7 @@ logging.basicConfig(
 # Open Library API configuration
 BASE_URL = "https://openlibrary.org/search.json?q=fiction&limit={}&offset={}"
 LIMIT = 100  
-TOTAL_RECORDS = 50000 
+TOTAL_RECORDS = 100000 
 CONCURRENCY = 4  # Tăng nhẹ concurrency
 MAX_BATCH_SIZE = 500
 REQUEST_DELAY = 1.5  # Giảm nhẹ delay xuống 1.5 giây  

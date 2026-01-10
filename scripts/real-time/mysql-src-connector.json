@@ -1,0 +1,29 @@
+{
+    "name": "mysql-source-connector",
+    "config": {
+        "connector.class": "io.debezium.connector.mysql.MySqlConnector",
+        "database.hostname": "mysql",
+        "database.port": "3306",
+        "database.user": "admin",
+        "database.password": "admin",
+        "database.server.id": "101",
+        "topic.prefix": "mysql",
+        "database.include.list": "project_db",
+        "table.include.list": "project_db.orders,project_db.order_details",
+        "message.key.columns": "project_db.order_details:order_id;project_db.orders:id",
+        "schema.history.internal.kafka.bootstrap.servers": "kafka:9092,kafka-2:9094",
+        "schema.history.internal.kafka.topic": "schemahistory.project_db",
+        "schema.history.internal.store.only.captured.tables.ddl": "true",
+        "schema.history.internal.store.only.captured.databases.ddl": "true",
+        "snapshot.mode": "when_needed",
+        "include.schema.changes": "false",
+        "errors.tolerance": "all",
+        "errors.log.enable": "true",
+        "errors.log.include.messages": "true",
+        "errors.retry.timeout": "600000",
+        "errors.retry.delay.max.ms": "30000",
+        "heartbeat.interval.ms": "10000",
+        "offset.flush.timeout.ms": "10000",
+        "offset.flush.interval.ms": "5000"
+    }
+}

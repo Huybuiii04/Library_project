@@ -1,8 +1,0 @@
-docker exec mysql-db mysql -u admin -padmin project_db < d:\Data\Project13-12\init-scripts\01_init.sql
-
-
-Get-Content "d:\Data\Project13-12\init-scripts\01_init.sql" -Raw | docker exec -i mysql-db mysql -uadmin -padmin project_db
-
-docker exec mysql-db mysql -uadmin -padmin project_db -e "SHOW TABLES;"
-
-docker compose restart airflow-webserver
